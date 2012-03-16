@@ -21,12 +21,22 @@ Boundaries
 <script type="text/javascript" src="http://calvinmetcalf.github.com/jquery-placeholder/jquery.placeholder.min.js"></script>
 </head>
 <body><div id="tabs"><ul>
-<li><a href="#tabs-1">Search</a></li></ul>
+<li><a href="#tabs-1">Search</a></li>
+<li><a href="#tabs-2">Query</a></li>
+<li><a href="#tabs-3">Map</a></li></ul>
     <div id="tabs-1">
 		 <input type="text" id="address" style="width:16em;" placeholder="Enter an Address or LatLong" />
   <input type="submit" value="Search" onClick="geocode();"/>
   <input type="reset" value="Reset" onClick="resetgeo();"/>
-
+        </div>
+        <div id="tabs-2">
+        <select id="townName" onchange="changeMap();"><option value="">All Towns</option></select>
+        </div>
+        <div id="tabs-3">
+        <select id="whichMap" onchange="changeStuff();"><option value="3240720">Towns</option>
+        <option value="3248484">Highway Districts</option>
+        <option value="3248922">RPA/MPO</option>
+        </select>
         </div>
 </div>
 <div id="map"></div>
