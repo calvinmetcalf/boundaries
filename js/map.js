@@ -8,7 +8,7 @@ var mainLayer;
 var tType;
  $(function() {
         $( "#tabs" ).tabs({
-			collapsible: true,
+    		collapsible: true,
             selected: -1
 		});
         $( "input:submit,input:reset" ).button();
