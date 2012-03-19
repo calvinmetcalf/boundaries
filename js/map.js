@@ -1,21 +1,22 @@
-var m;
-var tid;
+var m, tid, marker, mainLayer, tType;
+var google = this.google;
 var geocoder = new google.maps.Geocoder();
 var zoom = 8;
 var center = new google.maps.LatLng(42.04113400940814,-71.795654296875);
-var marker;
-var mainLayer;
-var tType;
- $(function() {
+var getTownData = MakeData("townName", " WHERE TOWN LIKE ");
+
+google.load('visualization', '1', {});
+
+$(function() {
         $( "#tabs" ).tabs({
-    		collapsible: true,
+            collapsible: true,
             selected: -1
 		});
         $( "input:submit,input:reset" ).button();
         $('input, textarea').placeholder();
         fusion();
         popLists();
-      	});
+      });
 
 function fusion() {
     tid = document.getElementById("whichMap").value;
@@ -53,16 +54,13 @@ function resetgeo() {
 marker.setMap(null);
 }
 
-    
-    google.load('visualization', '1', {});
-
 function MakePopList(columnName,callfunc){
  var queryText = encodeURIComponent("SELECT " +columnName + ", COUNT() FROM " + tid + " GROUP BY " + columnName);
     var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
 	query.send(callfunc);
 	}
     
-    function popLists(){    
+function popLists(){    
 
 MakePopList('TOWN',getTownData);
 
@@ -92,7 +90,7 @@ var numRows = response.getDataTable().getNumberOfRows();
 }
 return getData;
 }
-var getTownData = MakeData("townName", " WHERE TOWN LIKE ");
+
 
 function changeMap() {
   
@@ -150,10 +148,12 @@ m.setCenter(new google.maps.LatLng(kLats.pop(),kLngs.pop()));
 m.setZoom(14);
 }
 }
+
 function changeStuff(){
     tid = document.getElementById("whichMap").value;
     mainLayer.setMap(null);
      mainLayer = new google.maps.FusionTablesLayer(tid);
+     tType = document.getElementById('townName').value.replace("'", "\\'");
     mainLayer.setQuery("SELECT 'geometry' FROM " + tid + tType);
      mainLayer.setMap(m);
 }
