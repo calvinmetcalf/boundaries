@@ -5,7 +5,7 @@ var zoom = 8;
 var center = new google.maps.LatLng(42.04113400940814,-71.795654296875);
 var marker;
 var mainLayer;
-
+var tType;
  $(function() {
         $( "#tabs" ).tabs({
 			collapsible: true,
@@ -96,7 +96,7 @@ var getTownData = MakeData("townName", " WHERE TOWN LIKE ");
 
 function changeMap() {
   
-  var tType = document.getElementById('townName').value.replace("'", "\\'");
+  tType = document.getElementById('townName').value.replace("'", "\\'");
   var tQuerry = "SELECT 'geometry' FROM " + tid + tType;
   mainLayer.setQuery(tQuerry);
   var centerQuery = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='  + encodeURIComponent(tQuerry));
@@ -154,6 +154,6 @@ function changeStuff(){
     tid = document.getElementById("whichMap").value;
     mainLayer.setMap(null);
      mainLayer = new google.maps.FusionTablesLayer(tid);
-    mainLayer.setQuery("SELECT 'geometry' FROM " + tid);
+    mainLayer.setQuery("SELECT 'geometry' FROM " + tid + tType);
      mainLayer.setMap(m);
 }
