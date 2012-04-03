@@ -51,7 +51,7 @@ function resetgeo() {
     
     m.setCenter(center);
     m.setZoom(zoom);
-marker.setMap(null);
+    marker.setMap(null);
 }
 
 function MakePopList(columnName,callfunc){
