@@ -1,1 +1,1 @@
-some boundary maps, most likely as a fusion table map
+Boundaries, for use with MA boundaries, in coffee script and javascript
