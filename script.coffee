@@ -1,4 +1,4 @@
-mm=(u,ppp)->
+window.mm=(u,ppp)->
   opt =
     tile:
       subdomains: ["otile1", "otile2", "otile3", "otile4"]
@@ -7770,6 +7770,3 @@ mm=(u,ppp)->
   
   o.on "click", (e) ->
     query.getStuff e.latlng.lng + "," + e.latlng.lat
-$ ->
-  mm "http://services.massdot.state.ma.us/ArcGIS/rest/services/Boundaries/MPO", (d) ->
-    d.features[0].attributes.MPO

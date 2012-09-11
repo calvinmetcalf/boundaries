@@ -17,7 +17,7 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.4.2/leaflet.js"></script>
    
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="leaflet-hash.js"></script>
+    <script type="text/javascript" src="http://calvinmetcalf.github.com/leaflet-hash/leaflet-hash.js"></script>
     
     
     <title>
@@ -27,7 +27,9 @@
   <body>
     <div id="map"></div>
 <script type="text/javascript" src="http://coffeescript.org/extras/coffee-script.js"></script> <script type="text/coffeescript" src="script.coffee"></script>
-
-
-    
+<script type="text/coffeescript">
+$ ->
+  window.mm "http://services.massdot.state.ma.us/ArcGIS/rest/services/Boundaries/MPO", (d) ->
+    d.features[0].attributes.MPO
+</script>
 </html>
