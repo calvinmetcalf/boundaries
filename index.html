@@ -29,7 +29,7 @@
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript">
     $(function(){
-       mm("http://services.massdot.state.ma.us/ArcGIS/rest/services/Boundaries/MPO",function(d){return d.features[0].attributes.MPO;}); 
+       mm("Boundaries/MPO",function(d){return d.features[0].attributes.MPO;}); 
         
     });
     
