@@ -15,10 +15,10 @@ window.mm=(u,ppp)->
   t = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpeg", opt.tile)
   m = L.map("map", opt.map).addLayer(t)
   h=new L.Hash(m)
-  mpo = L.tileLayer(u+"/MapServer/tile/{z}/{y}/{x}", opt.mpo)
+  mpo = L.tileLayer("http://gis-otp.rhcloud.com/"+u+"/{z}/{x}/{y}", opt.mpo)
   mpo.addTo m
   query=
-    base:u+"/MapServer/0/query?geometryType=esriGeometryPoint&returnGeometry=false&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelWithin&outFields=*&f=json&geometry="
+    base:"http://services.massdot.state.ma.us/ArcGIS/rest/services/"+u+"/MapServer/0/query?geometryType=esriGeometryPoint&returnGeometry=false&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelWithin&outFields=*&f=json&geometry="
     getStuff: (ll) ->
       $.get query.base + ll, ((d) ->
         l=ll.split(",")

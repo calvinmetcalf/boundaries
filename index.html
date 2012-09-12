@@ -29,7 +29,7 @@
 <script type="text/javascript" src="http://coffeescript.org/extras/coffee-script.js"></script> <script type="text/coffeescript" src="script.coffee"></script>
 <script type="text/coffeescript">
 $ ->
-  window.mm "http://services.massdot.state.ma.us/ArcGIS/rest/services/Boundaries/MPO", (d) ->
+  window.mm "Boundaries/MPO", (d) ->
     d.features[0].attributes.MPO
 </script>
 </html>
